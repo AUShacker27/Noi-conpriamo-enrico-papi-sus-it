@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrico Papi Mystery</title>
+    <style>
+        /* Sfondo completamente nero e centraggio assoluto */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Schermata iniziale con la domanda e il pulsante */
+        .quiz-container {
+            text-align: center;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Il pulsante giallo richiesto */
+        .btn-giallo {
+            background-color: #ffcc00;
+            color: #000000;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.6);
+        }
+
+        /* Contenitore del video (nascosto all'inizio) */
+        .video-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+        }
+
+        /* Inquadratura perfetta senza ritagli laterali come nel secondo video */
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Schermata Principale con il NUOVO TITOLO MEME -->
+    <div class="quiz-container" id="quizScreen">
+        <h1>oggi Enrico papi è un po' sus!</h1>
+        <button class="btn-giallo" id="discoverBtn">Scoprilo</button>
+    </div>
+
+    <!-- Schermata Video Locale in Loop -->
+    <div class="video-container" id="videoScreen">
+        <video id="papiVideo" loop playsinline autoplay muted>
+            <source src="Video.mp4" type="video/mp4">
+            Il tuo browser non supporta questo video.
+        </video>
+    </div>
+
+    <script>
+        const quizScreen = document.getElementById('quizScreen');
+        const videoScreen = document.getElementById('videoScreen');
+        const discoverBtn = document.getElementById('discoverBtn');
+        const papiVideo = document.getElementById('papiVideo');
+
+        discoverBtn.addEventListener('click', () => {
+            // 1. Nasconde la scritta e il tasto giallo
+            quizScreen.style.display = 'none';
+            
+            // 2. Mostra lo schermo del video
+            videoScreen.style.display = 'block';
+            
+            // 3. Togliamo il muto e alziamo il volume al massimo al click
+            papiVideo.muted = false;
+            papiVideo.volume = 1.0;
+            
+            // Fa ripartire il video da zero con l'audio attivo
+            papiVideo.currentTime = 0;
+            papiVideo.play().catch(err => console.log("Errore audio:", err));
+        });
+    </script>
+</body>
+</html>

@@ -1,99 +1,102 @@
 <!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enrico Papi Nuovo Progetto</title>
-    <style>
-        body {
-            background-color: #000000;
-            color: #ffffff;
+<html lingua="Esso">
+<Testa>
+    <meta set di caratteri="UTF-8">
+    <meta nome="finestra di visualizzazione" contenuto="larghezza=larghezza-dispositivo, scala-iniziale=1.0">
+    <title>Il mistero di Enrico Papi</title>
+    <stile>
+        corpo{
+            colore di sfondo: #000000;
+            colore: #ffffff;
             font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            margine: 0;
+            imbottitura: 0;
+            display: flettere;
+            direzione flessibile: colonna;
+            giustifica-contenuto: centro;
+            allinea-elementi: centro;
+            altezza: 100vh;
+            troppo pieno: nascosto;
         }
 
-        .quiz-container {
-            text-align: center;
-            padding: 20px;
-            z-index: 10;
+        .contenitore del quiz{
+            allineamento testo: centro;
+            imbottitura: 20px;
+            indice z: 10;
         }
 
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            font-weight: bold;
+        h1{
+            dimensione del carattere: 2rem;
+            margine inferiore: 30px;
+            peso del carattere: grassetto;
         }
 
-        .btn-giallo {
-            background-color: #ffcc00;
-            color: #000000;
-            border: none;
-            border-radius: 50px;
-            padding: 15px 40px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.6);
+        .btn-giallo{
+            colore di sfondo: #ffcc00;
+            colore: #000000;
+            confine: nessuno;
+            bordo-radius: 50px;
+            imbottitura: 15px 40px;
+            dimensione del carattere: 1.3rem;
+            peso del carattere: grassetto;
+            trasformazione del testo: maiuscolo;
+            cursore: puntatore;
+            ombra della scatola: 0px 0px 20px rgba(255, 204, 0, 0.6);
         }
 
-        .video-container {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000000;
+        .contenitore video{
+            display: nessuno;
+            posizione: assoluto;
+            superiore: 0;
+            sinistra: 0;
+            larghezza: 100%;
+            altezza: 100%;
+            colore di sfondo: #000000;
         }
 
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        video{
+            larghezza: 100%;
+            altezza: 100%;
+            adattamento dell'oggetto: contenere;
         }
     </style>
-</head>
+</Testa>
 <body>
 
-    <div class="quiz-container" id="quizScreen">
+    <!-- Schermata Principale con la tua frase -->
+    <div classe="contenitore del quiz" id="quizScreen">
         <h1>oggi Enrico papi è un po' sus!</h1>
-        <button class="btn-giallo" id="discoverBtn">Scoprilo</button>
+        <pulsante classe="btn-giallo" id="scopriBtn">Disco</pulsante>
     </div>
 
-    <div class="video-container" id="videoScreen">
-        <video id="papiVideo" loop playsinline autoplay muted>
-            <source src="Video.mp4" type="video/mp4">
+    <!-- Schermata Video Locale in Loop -->
+    <div classe="contenitore video" id="videoScreen">
+        <video id="papiVideo" ciclo continuo gioca in linea riproduzione automatica silenziato>
+            <fonte fonte="Video.mp4" tipo="video/mp4">
             Il tuo browser non supporta questo video.
         </video>
     </div>
 
     <script>
-        const quizScreen = document.getElementById('quizScreen');
-        const videoScreen = document.getElementById('videoScreen');
-        const discoverBtn = document.getElementById('discoverBtn');
-        const papiVideo = document.getElementById('papiVideo');
+        costa Schermata del quiz = documento.getElementById('quizScreen');
+        costa schermo video = documento.getElementById('videoScreen');
+        costa scopriBtn = documento.getElementById('discoverBtn');
+        costa papiVideo = documento.getElementById('papiVideo');
 
-        discoverBtn.addEventListener('click', () => {
-            quizScreen.style.display = 'none';
-            videoScreen.style.display = 'block';
+        scopriBtn.addEventListener('clic', () => {
+            // 1. Nasconde la scritta e il tasto giallo
+            Schermata del quiz.stile.display = 'nessuno';
             
-            papiVideo.muted = false;
+            // 2. Mostra lo schermo del video
+            schermo video.stile.display = 'bloccare';
+            
+            // 3. TRUCCO PER L'AUDIO: Togliamo il silenzio e alziamo il volume al massimo al click!
+            papiVideo.silenziato = falso;
             papiVideo.volume = 1.0;
             
-            papiVideo.currentTime = 0;
-            papiVideo.play().catch(err => {
-                console.log("Sblocco audio...");
-                papiVideo.muted = true;
-                papiVideo.play();
-            });
+            // Fa ripartire il video da zero per la sicurezza con l'audio attivo
+            papiVideo.tempo corrente = 0;
+            papiVideo.giocare().presa(errore => console.tronco d'albero("Errore audio:", errore));
         });
     </script>
 </body>

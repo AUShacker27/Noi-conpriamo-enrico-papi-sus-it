@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enrico Papi Mystery</title>
+    <title>Enrico Papi Nuovo Progetto</title>
     <style>
         /* Sfondo completamente nero e centraggio assoluto */
         body {
@@ -58,7 +58,7 @@
             background-color: #000000;
         }
 
-        /* Inquadratura perfetta senza ritagli laterali come nel secondo video */
+        /* Inquadratura proporzionata con bande nere (stile Video 2) */
         video {
             width: 100%;
             height: 100%;
@@ -68,13 +68,13 @@
 </head>
 <body>
 
-    <!-- Schermata Principale con il NUOVO TITOLO MEME -->
+    <!-- Schermata Principale col NUOVO TITOLO -->
     <div class="quiz-container" id="quizScreen">
         <h1>oggi Enrico papi è un po' sus!</h1>
         <button class="btn-giallo" id="discoverBtn">Scoprilo</button>
     </div>
 
-    <!-- Schermata Video Locale in Loop -->
+    <!-- Schermata per il tuo NUOVO Video Locale -->
     <div class="video-container" id="videoScreen">
         <video id="papiVideo" loop playsinline autoplay muted>
             <source src="Video.mp4" type="video/mp4">
@@ -89,19 +89,22 @@
         const papiVideo = document.getElementById('papiVideo');
 
         discoverBtn.addEventListener('click', () => {
-            // 1. Nasconde la scritta e il tasto giallo
+            // Nasconde la scritta iniziale
             quizScreen.style.display = 'none';
-            
-            // 2. Mostra lo schermo del video
+            // Mostra lo schermo del video
             videoScreen.style.display = 'block';
             
-            // 3. Togliamo il muto e alziamo il volume al massimo al click
+            // Attiva l'audio e imposta il volume al massimo al click
             papiVideo.muted = false;
             papiVideo.volume = 1.0;
             
-            // Fa ripartire il video da zero con l'audio attivo
+            // Fa partire il tuo nuovo video offline
             papiVideo.currentTime = 0;
-            papiVideo.play().catch(err => console.log("Errore audio:", err));
+            papiVideo.play().catch(err => {
+                console.log("Sblocco di emergenza senza audio...");
+                papiVideo.muted = true;
+                papiVideo.play();
+            });
         });
     </script>
 </body>
